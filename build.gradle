@@ -1,0 +1,17 @@
+group 'aura'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+
+mainClassName = 'aura.jdw.JDWPServer'
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile 'io.reactivex:rxjava:1.1.6'
+}
+
