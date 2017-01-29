@@ -1,5 +1,6 @@
 package aura.jdw;
 
+import aura.jdw.vm.VMClass;
 import org.junit.Test;
 import sun.util.locale.BaseLocale;
 import sun.util.locale.LocaleObjectCache;

@@ -1,4 +1,4 @@
-package aura.jdw;
+package aura.jdw.protocol;
 
 /**
  * Created by ash on 21/12/2016.

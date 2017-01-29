@@ -1,5 +1,6 @@
 package aura.jdw;
 
+import aura.jdw.protocol.JDWPConstants;
 import org.junit.Test;
 
 import java.io.IOException;

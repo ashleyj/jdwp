@@ -1,5 +1,8 @@
 package aura.jdw;
 
+import aura.jdw.JDWPObservable;
+import aura.jdw.protocol.JDWPCommandPacket;
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -36,7 +39,7 @@ public class JDWPServer {
 
             inbytes = new byte[HEADER_LENGTH];
             while (inStream.read(inbytes) != -1) {
-                CommandPacket command =  CommandPacket.createFromHeader(inbytes);
+                JDWPCommandPacket command =  JDWPCommandPacket.createFromHeader(inbytes);
 
                 if (command.getDataSize() > 0) {
                     try {

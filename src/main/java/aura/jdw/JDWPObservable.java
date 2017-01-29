@@ -1,5 +1,7 @@
 package aura.jdw;
 
+import aura.jdw.protocol.JDWPCommandPacket;
+import aura.jdw.protocol.JDWPReplyPacket;
 import aura.jdw.vm.VMClass;
 import aura.jdw.vm.VMControl;
 import rx.Observable;
@@ -7,7 +9,7 @@ import rx.Observable;
 import java.io.IOException;
 import java.util.List;
 
-import static aura.jdw.JDWPConstants.*;
+import static aura.jdw.protocol.JDWPConstants.*;
 import static aura.jdw.Utils.*;
 
 /**
@@ -16,7 +18,7 @@ import static aura.jdw.Utils.*;
 public class JDWPObservable {
 
 
-    public static Observable<ReplyPacket> create(CommandPacket commandPacket) {
+    public static Observable<JDWPReplyPacket> create(JDWPCommandPacket commandPacket) {
 
         return Observable.create(subscriber -> {
 
@@ -32,7 +34,7 @@ public class JDWPObservable {
                     break;
             }
 
-            ReplyPacket replyPacket = new ReplyPacket(
+            JDWPReplyPacket replyPacket = new JDWPReplyPacket(
                     commandPacket.getId(),
                     commandPacket.getFlag(),
                     error,
@@ -66,7 +68,6 @@ public class JDWPObservable {
         byte eventType = getByte(0, data);
         byte suspendPolicy = getByte(1, data);
         int modifier = getInt(2, data);
-        //Modifier modifier = new Modifier(getInt(2, data));
         switch (eventType) {
 
             case CLASS_PREPARE:

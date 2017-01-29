@@ -1,11 +1,12 @@
-package aura.jdw;
+package aura.jdw.protocol;
+
 
 import static aura.jdw.Utils.*;
 
 /**
  * Created by ash on 19/12/2016.
  */
-public class CommandPacket extends JDWPPacket{
+public class JDWPCommandPacket extends JDWPPacket {
 
     public static int COMMANDSETSIZE = 1;
     public static int COMMANDSIZE = 1;
@@ -13,7 +14,7 @@ public class CommandPacket extends JDWPPacket{
     private int commandSet;
     private int command;
 
-    public CommandPacket(int length, int id, int flag, int commandSet, int command, byte[] data) {
+    public JDWPCommandPacket(int length, int id, int flag, int commandSet, int command, byte[] data) {
        this.length = length;
        this.id = id;
        this.flag = flag;
@@ -22,7 +23,7 @@ public class CommandPacket extends JDWPPacket{
        this.data = data;
     }
 
-    public static CommandPacket createFromHeader(byte[] inbytes) {
+    public static JDWPCommandPacket createFromHeader(byte[] inbytes) {
         if (inbytes.length != HEADERSIZE) {
             throw new IllegalArgumentException("Header has invalid length");
         }
@@ -34,7 +35,7 @@ public class CommandPacket extends JDWPPacket{
         int commandSet = getByte(position+=FLAGFIELDSIZE, inbytes);
         int command = getByte(position+=COMMANDSETSIZE, inbytes);
 
-        return new CommandPacket(length, id, flag, commandSet, command, null);
+        return new JDWPCommandPacket(length, id, flag, commandSet, command, null);
     }
 
     public int getCommandSet() {

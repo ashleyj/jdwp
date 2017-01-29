@@ -1,4 +1,4 @@
-package aura.jdw;
+package aura.jdw.protocol;
 
 public class JDWPProtocolException extends Exception{
 

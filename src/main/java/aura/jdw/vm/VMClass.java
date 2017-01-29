@@ -1,6 +1,6 @@
 package aura.jdw.vm;
 
-import aura.jdw.JDWPConstants;
+import aura.jdw.protocol.JDWPConstants;
 import aura.jdw.Utils;
 import sun.reflect.generics.reflectiveObjects.ParameterizedTypeImpl;
 import sun.reflect.generics.reflectiveObjects.TypeVariableImpl;

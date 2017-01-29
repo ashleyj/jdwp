@@ -1,4 +1,4 @@
-package aura.jdw;
+package aura.jdw.protocol;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -6,12 +6,12 @@ import java.nio.ByteBuffer;
 
 import static aura.jdw.Utils.*;
 
-public class ReplyPacket extends  JDWPPacket {
+public class JDWPReplyPacket extends JDWPPacket {
 
     int error;
     private int bytes;
 
-    public ReplyPacket(int id, int flag, int error, byte[] data) {
+    public JDWPReplyPacket(int id, int flag, int error, byte[] data) {
        this.length = HEADERSIZE;
         if (data != null) {
             length += data.length;
@@ -23,11 +23,11 @@ public class ReplyPacket extends  JDWPPacket {
        this.data = data;
     }
 
-    public ReplyPacket() {
+    public JDWPReplyPacket() {
 
     }
 
-    public static ReplyPacket createFromHeader(byte[] inbytes) {
+    public static JDWPReplyPacket createFromHeader(byte[] inbytes) {
         if (inbytes.length != HEADERSIZE) {
             throw new IllegalArgumentException("Header has invalid length");
         }
@@ -38,7 +38,7 @@ public class ReplyPacket extends  JDWPPacket {
         int flag = getByte(position+=IDFIELDSIZE, inbytes);
         int error = getShort(position+=FLAGFIELDSIZE, inbytes);
 
-        return new ReplyPacket(id, flag, error, null);
+        return new JDWPReplyPacket(id, flag, error, null);
     }
 
     public int getErrorCode() {

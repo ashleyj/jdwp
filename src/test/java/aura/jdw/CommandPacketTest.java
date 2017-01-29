@@ -1,7 +1,6 @@
 package aura.jdw;
 
-import aura.jdw.CommandPacket;
-import aura.jdw.ReplyPacket;
+import aura.jdw.protocol.JDWPCommandPacket;
 import org.junit.Test;
 
 /**
@@ -13,12 +12,12 @@ public class CommandPacketTest {
     @Test(expected = IllegalArgumentException.class)
     public void createrHeaderFromInvalidArray() {
         byte[] invalidByteArray = new byte[]{0, 0, 11};
-        CommandPacket.createFromHeader(invalidByteArray);
+        JDWPCommandPacket.createFromHeader(invalidByteArray);
     }
     @Test
     public void createHeaderFromValidArray() {
         byte[] validHeader = new byte[] {0,0,0,11,0,0,0,1,0,1,7};
-        CommandPacket commandPacket = CommandPacket.createFromHeader(validHeader);
+        JDWPCommandPacket commandPacket = JDWPCommandPacket.createFromHeader(validHeader);
         commandPacket.getDataSize();
     }
 }

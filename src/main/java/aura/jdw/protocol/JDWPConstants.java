@@ -1,4 +1,4 @@
-package aura.jdw;
+package aura.jdw.protocol;
 
 /**
  * Created by ash on 21/12/2016.
@@ -9,7 +9,7 @@ public class JDWPConstants {
     public final static int EVENT_REQUEST_COMMANDSET = 15;
 
     /* Commands */
-    final static int EVENT_REQUEST_COMMAND_SET = 1;
+    public final static int EVENT_REQUEST_COMMAND_SET = 1;
     public final static int VM_COMMAND_ID_SIZES = 7;
     public final static int VM_COMMAND_VERSION = 1;
     public final static int VM_COMMAND_CLASSPATHS = 13;

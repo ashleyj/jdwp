@@ -1,5 +1,6 @@
 package aura.jdw;
 
+import aura.jdw.vm.VMClass;
 import aura.jdw.vm.VMControl;
 import org.junit.Test;
 
@@ -34,9 +35,14 @@ public class VMControlTest {
 
     @Test
     public void getClassPaths() {
+        String path1 = "/tmp/test";
+        String path2 = "/tmp/test2";
+
+        /* set class path */
+        System.setProperty("java.class.path",path1 + ":" + path2);
         VMControl vmControl = new VMControl();
         String[] classPaths = vmControl.getClassPaths();
-        assertTrue(classPaths.length > 6);
+        assertTrue(classPaths.length == 2);
     }
 
 
