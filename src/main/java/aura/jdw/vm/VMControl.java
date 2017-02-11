@@ -12,13 +12,6 @@ import java.util.List;
 public class VMControl {
 
 
-    private List<VMClass> classList;
-
-    public VMControl() {
-
-    }
-
-
     public List<VMClass> getClassList() throws IOException {
         ClassLoader classLoader = getClass().getClassLoader();
         List<VMClass> classList = new ArrayList<>();
